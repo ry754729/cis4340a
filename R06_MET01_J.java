@@ -1,4 +1,11 @@
 public static int getAbsAdd(int x, int y) {
-    return Math.abs(x) + Math.abs(y);
+  if (x == Integer.MIN_VALUE || y == Integer.MIN_VALUE) {
+    throw new IllegalArgumentException();
   }
-  getAbsAdd(Integer.MIN_VALUE, 1);
+  int absX = Math.abs(x);
+  int absY = Math.abs(y);
+  if (absX > Integer.MAX_VALUE - absY) {
+    throw new IllegalArgumentException();
+  }
+  return absX + absY;
+}
